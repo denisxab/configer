@@ -3,19 +3,18 @@
 """
 from importlib.machinery import ModuleSpec
 from importlib.util import spec_from_file_location, module_from_spec
-from os import sep
+from os import path
 from re import sub, findall
 from types import ModuleType
 from typing import Optional
 
-from loguru import logger
+from helper import logger
 
 
 class ConfFile:
     """
     .
     """
-
     # Спец символы для вставки значения по ключу
     split_regx: tuple[str, str] = ("\$\$\(", "\)\$\$")
 
@@ -24,9 +23,9 @@ class ConfFile:
                  path_out: str,
                  template: str,
                  kwargs: dict[str, str]):
-        logger.info(f"[TEMPLATE] {file_name}")
+        logger.info(f"{file_name}", flag="TEMPLATE")
         self.template: str = self.parse_template(template, kwargs)
-        self.writeFile(f"{path_out}{sep}{file_name}", self.template)
+        self.writeFile(_path=path.join(path_out, file_name), text=self.template)
 
     @classmethod
     def parse_template(cls, template: str, kwargs: dict[str, str]) -> str:
@@ -37,7 +36,7 @@ class ConfFile:
         """
         # Получить ключевые слова из текста
         re_obj = findall(f"{cls.split_regx[0]}([\w\d]+){cls.split_regx[1]}", template)
-        logger.info(f"[FIND] {re_obj}")
+        logger.info(re_obj, flag="FIND")
         # Заменить ключевые слова из текста на те которые передали в метод
         for _key in re_obj:
             var: str = str(kwargs[_key])
@@ -52,7 +51,7 @@ class ConfFile:
         """
         with open(_path, "w") as _file:
             _file.write(text)
-        logger.info(f"[FILE_WRITE] {_path}")
+        logger.info(_path, flag="FILE_WRITE")
 
 
 def read_file_by_module(infile: str) -> ModuleType:

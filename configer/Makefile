@@ -1,4 +1,3 @@
-
 proj_name = "configer.bin"
 
 # Скомпилировать проект
