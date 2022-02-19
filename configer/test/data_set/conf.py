@@ -1,4 +1,5 @@
 port = 8080
+any_name = "secret_data"
 
 env = ("__env.env", "/home/denis/PycharmProjects/configer/configer/test/data_set/", """
 ## Django
@@ -24,4 +25,8 @@ NGINX_PORT=$$(port)$$
 
 export_var = [
     env
+]
+
+hide_var = [
+    'any_name'
 ]

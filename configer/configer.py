@@ -1,12 +1,8 @@
 """
 Программа для создания файлов конфигураций
 """
-from importlib.machinery import ModuleSpec
-from importlib.util import spec_from_file_location, module_from_spec
 from os import path
 from re import sub, findall
-from types import ModuleType
-from typing import Optional
 
 from helper import logger
 
@@ -52,20 +48,3 @@ class ConfFile:
         with open(_path, "w") as _file:
             _file.write(text)
         logger.info(_path, flag="FILE_WRITE")
-
-
-def read_file_by_module(infile: str) -> ModuleType:
-    """
-    Импортировать файл как модуль `python`
-
-    @param infile: Путь к `python` файлу
-    @return: Модуль `python`
-    """
-    # указать модуль, который должен быть импортируется относительно пути модуль
-    spec: Optional[ModuleSpec] = spec_from_file_location("my_module", infile)
-    # создает новый модуль на основе спецификации
-    __module: ModuleType = module_from_spec(spec)
-    # выполняет модуль в своем собственном пространстве имен,
-    # когда модуль импортируется или перезагружается.
-    spec.loader.exec_module(__module)
-    return __module
