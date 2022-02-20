@@ -1,6 +1,19 @@
 """."""
 from re import sub, finditer
-from typing import Union
+from typing import NamedTuple
+
+
+class TypeHidden(NamedTuple):
+    """
+    Тип для возвращаемого значения `sub_data_from_variables`
+
+
+
+    :var sub_text: Скрытый текст
+    :arg res_find_var: Список имен переменных у которых было скрыты значения
+    """
+    sub_text: str
+    res_find_var: list[str]
 
 
 class HiddenVar:
@@ -9,7 +22,7 @@ class HiddenVar:
     """
 
     def __new__(cls, text_conf, prefix="_hide_", repl="___", ) \
-            -> dict[str, Union[str, list[str]]]:
+            -> TypeHidden:
         """
 
         :param text_conf:
@@ -18,20 +31,20 @@ class HiddenVar:
         """
         return cls.sub_data_from_variables(
             text_conf,
-            cls.sub_quotation_mark(text_conf),
+            cls.sub_staff(text_conf),
             prefix=prefix,
             repl=repl,
         )
 
     @staticmethod
-    def sub_quotation_mark(text: str, repl: str = '_') -> str:
+    def sub_staff(text: str, repl: str = '_') -> str:
         """
         Удаляем из исходного кода `Python`
         1. Кавычки
         2. Подсказки типов
         3. Скобки
 
-        НО при этом длинна текста сохраниться
+        НО при этом длинна текста сохраниться, потому что мы заменяем значение на `repl`
         """
         # Вырезаем одинарные и двойные кавычки
         template_rep_quotation_mark = """['"]{1}[\w\d\s_.,/'#$:=\[\]\(\)\{\}]+['"]{1}"""
@@ -53,9 +66,9 @@ class HiddenVar:
 
     @staticmethod
     def sub_data_from_variables(source_text: str, text: str, prefix="_hide_", repl="___") \
-            -> dict[str, str | list[str]]:
+            -> TypeHidden:
         """
-        Поиск и удаления значений у переменных имеющий префикс `prefix=`
+        Ищем и удаления значений у переменных имеющий префикс `prefix=`
 
         @param source_text: Исходный текст.
         @param text: Рекомендую обработать текс в функции `sub_quotation_mark`
@@ -64,6 +77,7 @@ class HiddenVar:
         @param repl: На что заменить.
         @param prefix: Какой префикс должен стоять в начале переменной,
         чтобы скрыть её данные.
+        @return:
         """
 
         res_find_var: list[str] = []
@@ -95,4 +109,4 @@ class HiddenVar:
             # Конец минус начало, и минус доп символы замены.
             count_cup_symbol += (r[1] - r[0]) - len_repl
 
-        return {"source_text": source_text, "res_find_var": res_find_var}
+        return TypeHidden(sub_text=source_text, res_find_var=res_find_var)

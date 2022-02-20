@@ -12,6 +12,7 @@ mg-file = "0.1.10.1"
 [tool.poetry.dev-dependencies]
 pytest = "^7.0.0"
 Nuitka = "^0.6.19"
+Sphinx = "^4.4.0"
 
 
 [build-system]

@@ -1,5 +1,3 @@
-from typing import Union
-
 import click
 from click import argument, command
 from mg_file.file.base_file import read_file_by_module, BaseFile, absolute_path_dir
@@ -7,8 +5,7 @@ from mg_file.file.txt_file import TxtFile
 
 from configer import ConfFile
 from helper import logger
-# Создаем группу
-from hidiger import HiddenVar
+from hidiger import HiddenVar, TypeHidden
 
 
 @click.group()
@@ -44,17 +41,17 @@ def hideconf(infile: str, outfile: str):
     """
     # Получаем исходный текст конфигурации
     __text_conf: str = TxtFile(infile, type_file=".py").readFile()
-    # У переменных которые необходимо скрыть, удаляем значения.
+    # Переменные которые необходимо скрыть, удаляем значения.
     # По умолчанию, для того чтобы пометить переменную, что её нужно скрыть
-    # нужно написать в начале её `_hide_`
-    __text_conf_rm: dict[str, Union[str, list[str]]] = HiddenVar(__text_conf)
+    # нужно написать в начале её `_hide_`.
+    __text_conf_rm: TypeHidden = HiddenVar(__text_conf)
     # Записываем новые текст со скрытыми значениями в файл
     TxtFile(outfile
             if outfile
             else absolute_path_dir(infile) / "conf_pub.py",
-            type_file=".py").writeFile(__text_conf_rm["source_text"])
+            type_file=".py").writeFile(__text_conf_rm.sub_text)
     # Логи
-    for _x in __text_conf_rm["res_find_var"]:
+    for _x in __text_conf_rm.res_find_var:
         logger.info(_x, flag="VAR_HIDE")
 
 

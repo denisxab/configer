@@ -1,3 +1,4 @@
 /.idea
 /venvs
 /configer/main.build
+__pycache__/
