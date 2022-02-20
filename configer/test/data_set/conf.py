@@ -1,7 +1,13 @@
 port = 8080
-any_name = "secret_data"
+_hide_any_name: str = "d1d1sxcdwc2qq32vwvdvw"
 
-env = ("__env.env", "/home/denis/PycharmProjects/configer/configer/test/data_set/", """
+
+def ini(se: str):
+    a = 10
+    print(se)
+
+
+_hide_env: tuple[str, str, dict] = ("__env.env", "/home/denis/PycharmProjects/configer/configer/test/data_set/", """
 ## Django
 # Ключ для расшифровки сессии
 DJANGO_SECRET_KEY="$$(secret_key)$$"
@@ -22,9 +28,10 @@ NGINX_PORT=$$(port)$$
     "project_name": "МойПроект",
     "port": port,
 })
+tmp = "q12312"
 
 export_var = [
-    env
+    _hide_env
 ]
 
 hide_var = [

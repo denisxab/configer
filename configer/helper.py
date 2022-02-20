@@ -16,3 +16,5 @@ class logger:
                                                                          color_flag=cls.yellow)
         print(res, end="")
         pprint(data)
+
+
