@@ -6,14 +6,9 @@ from typing import NamedTuple
 class TypeHidden(NamedTuple):
     """
     Тип для возвращаемого значения `sub_data_from_variables`
-
-
-
-    :var sub_text: Скрытый текст
-    :arg res_find_var: Список имен переменных у которых было скрыты значения
     """
-    sub_text: str
-    res_find_var: list[str]
+    sub_text: str  #: Скрытый текст
+    res_find_var: list[str]  #: Список имен переменных у которых было скрыты значения
 
 
 class HiddenVar:
@@ -24,10 +19,12 @@ class HiddenVar:
     def __new__(cls, text_conf, prefix="_hide_", repl="___", ) \
             -> TypeHidden:
         """
+        :param text_conf: Текст конфигурации
+        :param prefix: Что должно стоять в начале переменой, для того чтобы скрыть
+        её значение
+        :param repl: На что заменить значение если его нужно скрыть
 
-        :param text_conf:
-        :param prefix:
-        :param repl:
+        :return: Текст со скрытыми значениями
         """
         return cls.sub_data_from_variables(
             text_conf,
@@ -39,12 +36,16 @@ class HiddenVar:
     @staticmethod
     def sub_staff(text: str, repl: str = '_') -> str:
         """
-        Удаляем из исходного кода `Python`
-        1. Кавычки
-        2. Подсказки типов
-        3. Скобки
+        Удаляем из исходного кода `Python`:
+        - Кавычки
+        - Подсказки типов
+        - Скобки
 
         НО при этом длинна текста сохраниться, потому что мы заменяем значение на `repl`
+
+        :param text: Текст
+        :param repl: На что заменить
+        :return: Текст без скобок и ковы чек и подсказок типа
         """
         # Вырезаем одинарные и двойные кавычки
         template_rep_quotation_mark = """['"]{1}[\w\d\s_.,/'#$:=\[\]\(\)\{\}]+['"]{1}"""
@@ -70,14 +71,14 @@ class HiddenVar:
         """
         Ищем и удаления значений у переменных имеющий префикс `prefix=`
 
-        @param source_text: Исходный текст.
-        @param text: Рекомендую обработать текс в функции `sub_quotation_mark`
+        :param source_text: Исходный текст.
+        :param text: Рекомендую обработать текс в функции `sub_quotation_mark`
         шаблон ожидает, то что в тексте не будет данных в кавычках и скобках, а также
         подсказок типов.
-        @param repl: На что заменить.
-        @param prefix: Какой префикс должен стоять в начале переменной,
+        :param repl: На что заменить.
+        :param prefix: Какой префикс должен стоять в начале переменной,
         чтобы скрыть её данные.
-        @return:
+        :return: Текст у которого скрыты значения
         """
 
         res_find_var: list[str] = []

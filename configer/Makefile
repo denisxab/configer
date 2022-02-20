@@ -6,3 +6,7 @@ compile:
 
 debug:
 	python -m nuitka main.py --follow-imports -o $(proj_name) --remove-output
+
+
+auto_doc:
+	sphinx-autobuild -b html ./docs/source ./docs/build/html;

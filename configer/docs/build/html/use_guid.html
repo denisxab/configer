@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1. Быстрый старт &mdash; документация configer 0.0.1</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="2. Api" href="api.html" />
+    <link rel="prev" title="Навигация" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> configer
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Быстрый старт</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">1.1. Что это</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">1.2. Установка</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">1.3. Использование</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">1.3.1. Консольные команды</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">1.3.2. Создание файла конфигураций</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">1.4. Реальный пример конфигурации</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">2. Api</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">configer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><span class="section-number">1. </span>Быстрый старт</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/use_guid.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1><span class="section-number">1. </span>Быстрый старт<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<section id="id2">
+<h2><span class="section-number">1.1. </span>Что это<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<p>Программа для создания файлов конфигурации. Часто встречается нужда держать конфигурационные файлы в порядке, и
+консистенции, распределять общие данные по разным типам файлам, у некоторых типов файлов нет возможности читать
+переменные окружения, или приходиться подстраиваться под каждый формат по отдельности. Для того чтобы не подстраиваться
+под каждый формат файла, можно использовать всю мощь <code class="docutils literal notranslate"><span class="pre">python</span></code> и держать все конфигурации в одном файле.</p>
+</section>
+<section id="id3">
+<h2><span class="section-number">1.2. </span>Установка<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<ol class="arabic simple">
+<li><p>Скачать <code class="docutils literal notranslate"><span class="pre">configer.bin</span></code></p></li>
+<li><p>Добавить алис</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">alias</span> -g <span class="nv">configer</span><span class="o">=</span><span class="s2">&quot;</span>$<span class="s2">ПутьГдеРасположенСonfiger</span>$<span class="s2">.bin&quot;</span><span class="p">;</span>
+configer --help
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h2><span class="section-number">1.3. </span>Использование<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<section id="id5">
+<h3><span class="section-number">1.3.1. </span>Консольные команды<a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h3>
+<p>Скомпилировать конфигурационные файлы</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>configer $ПутьКонфигурациям$.py
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h3><span class="section-number">1.3.2. </span>Создание файла конфигураций<a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h3>
+<p>Для того чтобы указать какие переменные нужно рассматривать в качестве конфигураций, их нужно поместить в переменную
+<code class="docutils literal notranslate"><span class="pre">export_var</span></code>, переменная с конфигурациями должна соответствовать правилам, это должен быть картеж со следующим порядком
+значений:</p>
+<ul class="simple">
+<li><p>Название файла (<code class="docutils literal notranslate"><span class="pre">str</span></code>)</p></li>
+<li><p>Путь куда поместить файл (<code class="docutils literal notranslate"><span class="pre">str</span></code>)</p></li>
+<li><p>Шаблон (<code class="docutils literal notranslate"><span class="pre">str</span></code>)</p>
+<ul>
+<li><p>Значения которые нужно взять из словаря заключите в <span class="math notranslate nohighlight">\($(Ключ)$\)</span></p></li>
+</ul>
+</li>
+<li><p>Словарь для замены слов (<code class="docutils literal notranslate"><span class="pre">dict[str,str]</span></code>)</p></li>
+</ul>
+<blockquote>
+<div><p>Эти значения подставится в <code class="docutils literal notranslate"><span class="pre">ConfFile(*args)</span></code></p>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">port</span> <span class="o">=</span> <span class="mi">8080</span>
+<span class="n">env</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;__env.env&quot;</span><span class="p">,</span> <span class="s2">&quot;./test&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">## Django</span>
+<span class="s2"># Ключ для расшифровки сессии</span>
+<span class="s2">DJANGO_SECRET_KEY=&quot;$$(secret_key)$$&quot;</span>
+<span class="s2"># Имя проекта</span>
+<span class="s2">NAME_PROJ=&quot;$$(project_name)$$&quot;</span>
+<span class="s2"># Режим работы (true/false)</span>
+<span class="s2">DEBUG=true</span>
+
+<span class="s2">### Docker</span>
+<span class="s2"># Путь к рабочей директории</span>
+<span class="s2">WORK_DIR=&quot;/usr/src/$$(project_name)$$&quot;</span>
+<span class="s2"># Путь к переемным окружениям</span>
+<span class="s2">PATH_ENV=&quot;./__env.env&quot;</span>
+<span class="s2">NGINX_PORT=8811</span>
+
+<span class="s2">&quot;&quot;&quot;</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="p">{</span>
+    <span class="s2">&quot;secret_key&quot;</span><span class="p">:</span> <span class="s2">&quot;dq232dc3f34f32q4fwe3&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;project_name&quot;</span><span class="p">:</span> <span class="s2">&quot;МойПроект&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="n">port</span><span class="p">,</span>
+<span class="p">})</span>
+<span class="n">export_var</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">env</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>В итоге мы получим файл, расположенный в <code class="docutils literal notranslate"><span class="pre">./test/__env.env</span></code>. Содержание</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>## Django
+# Ключ для расшифровки сессии
+DJANGO_SECRET_KEY=&quot;dq232dc3f34f32q4fwe3&quot;
+# Имя проекта
+NAME_PROJ=&quot;МойПроект&quot;
+# Режим работы (true/false)
+DEBUG=true
+
+### Docker
+# Путь к рабочей директории
+WORK_DIR=&quot;/usr/src/МойПроект&quot;
+# Путь к переемным окружениям
+PATH_ENV=&quot;./__env.env&quot;
+NGINX_PORT=8080
+</pre></div>
+</div>
+<p>Логи</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>2022-02-09 22:26:06.425 | INFO     | __main__:parse_conf:24 - [VAR] env
+2022-02-09 22:26:06.425 | INFO     | main:__init__:27 - [TEMPLATE] __env.env
+2022-02-09 22:26:06.426 | INFO     | main:parse_template:40 - [FIND] [&#39;secret_key&#39;, &#39;project_name&#39;, &#39;project_name&#39;, &#39;port&#39;]
+2022-02-09 22:26:06.426 | INFO     | main:writeFile:55 - [FILE_WRITE] ./test/__env.env
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id7">
+<h2><span class="section-number">1.4. </span>Реальный пример конфигурации<a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Режим работы</span>
+<span class="n">DEBUG</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="c1"># Имя проекта</span>
+<span class="n">project_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;frontend_template&quot;</span>
+<span class="c1"># Путь к скомпилированным статичным файлам</span>
+<span class="n">path_public</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/</span><span class="si">{</span><span class="n">project_name</span><span class="si">}</span><span class="s2">/frontend_react/static/frontend_react/public/&quot;</span>
+<span class="c1"># Путь ко всем статическим файлам</span>
+<span class="n">path_static</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/</span><span class="si">{</span><span class="n">project_name</span><span class="si">}</span><span class="s2">/frontend_react/static/&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">Nginx</span><span class="p">:</span>
+    <span class="c1"># Внешний и Внутренний порт для `nginx`. EXTERNAL_WEB_PORT != NGINX_PORT &lt;!Изменить значеня на свои&gt;</span>
+    <span class="n">PORT</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8080</span>
+    <span class="c1"># Путь к рабочей директории</span>
+    <span class="n">WORK_DIR</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/usr/src/</span><span class="si">{</span><span class="n">project_name</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="c1"># Внешний порт &lt;!Изменить значения на свои&gt;</span>
+    <span class="n">EXTERNAL_PORT</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8080</span>
+
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Конфигурации</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">env</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;__env.env&quot;</span><span class="p">,</span> <span class="s2">&quot;./&quot;</span><span class="p">,</span>
+       <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">       # (!) - обозначает что нельзя изменять имя ПО, так как его используют официальное образы.</span>
+
+<span class="sd">       ## Django</span>
+<span class="sd">       # Ключ для расшифровки сессии</span>
+<span class="sd">       # DJANGO_SECRET_KEY=&quot;django-insecure-@jt^$2(a!%rl%hs8^y@hu^am^+6h^rg4pwo*kp8d@1!+!5gl=i&quot;</span>
+<span class="sd">       # Имя проекта</span>
+<span class="sd">       NAME_PROJ=&quot;$$(project_name)$$&quot;</span>
+<span class="sd">       # Режим работы (true/false)</span>
+<span class="sd">       DEBUG=$$(DEBUG)$$</span>
+
+
+<span class="sd">       ### Docker</span>
+<span class="sd">       # Путь к рабочей директории</span>
+<span class="sd">       WORK_DIR=&quot;$$(WORK_DIR)$$&quot;</span>
+<span class="sd">       # Путь к переемным окружениям</span>
+<span class="sd">       PATH_ENV=&quot;./__env.env&quot;</span>
+<span class="sd">       # Внешний порт &lt;!Изменить значения на свои&gt;</span>
+<span class="sd">       EXTERNAL_WEB_PORT=$$(EXTERNAL_WEB_PORT)$$</span>
+<span class="sd">       # Внешний и Внутренний порт для `nginx`. EXTERNAL_WEB_PORT != NGINX_PORT &lt;!Изменить значеня на свои&gt;</span>
+<span class="sd">       NGINX_PORT=$$(NGINX_PORT)$$</span>
+
+
+<span class="sd">       # ### Postgres</span>
+<span class="sd">       # #  Имя БД (!) &lt;!Изменить значения на свои&gt;</span>
+<span class="sd">       # POSTGRES_DB=&quot;postgres&quot;</span>
+<span class="sd">       # # Имя пользователя (!) &lt;!Изменить значения на свои&gt;</span>
+<span class="sd">       # POSTGRES_USER=&quot;postgres&quot;</span>
+<span class="sd">       # # Пароль от пользователя (!) &lt;!Изменить значения на свои&gt;</span>
+<span class="sd">       # POSTGRES_PASSWORD=&quot;postgres&quot;</span>
+<span class="sd">       # # Имя сервиса(контейнера)</span>
+<span class="sd">       # POSTGRES_HOST=&quot;db&quot;</span>
+<span class="sd">       # # Порт подключения к БД. (По умолчанию 5432)</span>
+<span class="sd">       # POSTGRES_PORT=5432</span>
+<span class="sd">       # # Путь к зеркальной папке с БД</span>
+<span class="sd">       # POSTGRES_VOLUMES=&quot;./db/pg_data&quot;</span>
+<span class="sd">       &quot;&quot;&quot;</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
+       <span class="p">{</span>
+           <span class="s2">&quot;WORK_DIR&quot;</span><span class="p">:</span> <span class="n">Nginx</span><span class="o">.</span><span class="n">WORK_DIR</span><span class="p">,</span>
+           <span class="s2">&quot;project_name&quot;</span><span class="p">:</span> <span class="n">project_name</span><span class="p">,</span>
+           <span class="s2">&quot;NGINX_PORT&quot;</span><span class="p">:</span> <span class="n">Nginx</span><span class="o">.</span><span class="n">PORT</span><span class="p">,</span>
+           <span class="s2">&quot;EXTERNAL_WEB_PORT&quot;</span><span class="p">:</span> <span class="n">Nginx</span><span class="o">.</span><span class="n">EXTERNAL_PORT</span><span class="p">,</span>
+           <span class="s2">&quot;DEBUG&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span> <span class="k">if</span> <span class="n">DEBUG</span> <span class="k">else</span> <span class="s2">&quot;false&quot;</span>
+       <span class="p">}</span>
+       <span class="p">)</span>
+<span class="n">npm</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;package.json&quot;</span><span class="p">,</span> <span class="s2">&quot;./&quot;</span><span class="p">,</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    {</span>
+<span class="sd">        &quot;name&quot;: &quot;$$(project_name)$$&quot;,</span>
+<span class="sd">        &quot;version&quot;: &quot;1.0.0&quot;,</span>
+<span class="sd">        &quot;description&quot;: &quot;...&quot;,</span>
+<span class="sd">        &quot;private&quot;: true,</span>
+<span class="sd">        &quot;scripts&quot;: {</span>
+<span class="sd">            &quot;/1&quot;: &quot;Запустить автоматически перезагружаемый сервер [--mode development]&quot;,</span>
+<span class="sd">            &quot;dev&quot;: &quot;webpack serve --config $$(webpack_path)$$&quot;,</span>
+<span class="sd">            &quot;/2&quot;: &quot;Собрать проект `JS`. Для оптимизированной сборки измените `__env.env-&gt;DEBUG=&#39;false&#39;` или [--mode production]&quot;,</span>
+<span class="sd">            &quot;build&quot;: &quot;webpack --config $$(webpack_path)$$&quot;,</span>
+<span class="sd">            &quot;/3&quot;: &quot;Получить данные о размере банглов&quot;,</span>
+<span class="sd">            &quot;status&quot;: &quot;webpack --config $$(webpack_path)$$ --json &gt;status.json &amp;&amp; webpack-bundle-analyzer status.json&quot;</span>
+<span class="sd">        },</span>
+<span class="sd">        &quot;author&quot;: &quot;...&quot;,</span>
+<span class="sd">        &quot;license&quot;: &quot;ISC&quot;,</span>
+<span class="sd">        &quot;devDependencies&quot;: {</span>
+<span class="sd">            &quot;@types/react&quot;: &quot;^16.8.24&quot;,</span>
+<span class="sd">            &quot;@types/react-dom&quot;: &quot;^16.0.5&quot;,</span>
+<span class="sd">            &quot;@types/webpack&quot;: &quot;4.1.4&quot;,</span>
+<span class="sd">            &quot;clean-webpack-plugin&quot;: &quot;^4.0.0&quot;,</span>
+<span class="sd">            &quot;copy-webpack-plugin&quot;: &quot;^10.2.0&quot;,</span>
+<span class="sd">            &quot;css-loader&quot;: &quot;^6.5.1&quot;,</span>
+<span class="sd">            &quot;file-loader&quot;: &quot;^6.2.0&quot;,</span>
+<span class="sd">            &quot;html-webpack-plugin&quot;: &quot;^5.5.0&quot;,</span>
+<span class="sd">            &quot;loader&quot;: &quot;^2.1.1&quot;,</span>
+<span class="sd">            &quot;mini-css-extract-plugin&quot;: &quot;^2.4.5&quot;,</span>
+<span class="sd">            &quot;optimize-css-assets-webpack-plugin&quot;: &quot;^6.0.1&quot;,</span>
+<span class="sd">            &quot;sass&quot;: &quot;^1.45.0&quot;,</span>
+<span class="sd">            &quot;sass-loader&quot;: &quot;^12.4.0&quot;,</span>
+<span class="sd">            &quot;style-loader&quot;: &quot;^3.3.1&quot;,</span>
+<span class="sd">            &quot;terser-webpack-plugin&quot;: &quot;^5.3.0&quot;,</span>
+<span class="sd">            &quot;ts-loader&quot;: &quot;^6.2.1&quot;,</span>
+<span class="sd">            &quot;typescript&quot;: &quot;^3.9.10&quot;,</span>
+<span class="sd">            &quot;webpack&quot;: &quot;^5.67.0&quot;,</span>
+<span class="sd">            &quot;webpack-bundle-analyzer&quot;: &quot;^4.5.0&quot;,</span>
+<span class="sd">            &quot;webpack-cli&quot;: &quot;^4.9.2&quot;,</span>
+<span class="sd">            &quot;webpack-dev-server&quot;: &quot;^4.7.3&quot;</span>
+<span class="sd">        },</span>
+<span class="sd">        &quot;dependencies&quot;: {</span>
+<span class="sd">            &quot;bootstrap&quot;: &quot;^5.1.3&quot;,</span>
+<span class="sd">            &quot;react-bootstrap&quot;: &quot;^2.0.4&quot;,</span>
+<span class="sd">            &quot;dotenv&quot;: &quot;^10.0.0&quot;,</span>
+<span class="sd">            &quot;react&quot;: &quot;^16.12.0&quot;,</span>
+<span class="sd">            &quot;react-dom&quot;: &quot;^16.12.0&quot;,</span>
+<span class="sd">            &quot;react-router-dom&quot;: &quot;^6.2.1&quot;</span>
+<span class="sd">        }</span>
+<span class="sd">    }</span>
+<span class="sd">    &quot;&quot;&quot;</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;project_name&quot;</span><span class="p">:</span> <span class="n">project_name</span><span class="p">,</span>
+        <span class="s2">&quot;webpack_path&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">project_name</span><span class="si">}</span><span class="s2">/webpack.config.js&quot;</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">gitignore</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;.gitignore&quot;</span><span class="p">,</span> <span class="s2">&quot;./&quot;</span><span class="p">,</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    /node_modules</span>
+<span class="sd">    $$(path_static)$$</span>
+<span class="sd">    &quot;&quot;&quot;</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;path_static&quot;</span><span class="p">:</span> <span class="n">path_public</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">nginx</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;default.conf&quot;</span><span class="p">,</span> <span class="s2">&quot;./nginx&quot;</span><span class="p">,</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">server {</span>
+<span class="sd">    listen $$(NGINX_PORT)$$</span>
+<span class="sd">    default_server;</span>
+
+<span class="sd">    # Задаёт максимально допустимый размер тела запроса клиента.</span>
+<span class="sd">    client_max_body_size 4G;</span>
+
+<span class="sd">    location = /favicon.ico {</span>
+<span class="sd">        access_log off; log_not_found off;</span>
+<span class="sd">    }</span>
+
+<span class="sd">    # Раздача `index.html`</span>
+<span class="sd">    location / {</span>
+<span class="sd">        root $$(root_path)$$;</span>
+<span class="sd">    }</span>
+
+<span class="sd">    # Раздача статических файлов</span>
+<span class="sd">    # http://127.0.0.1:$$(NGINX_PORT)$$/static/frontend_react/public/index.html</span>
+<span class="sd">    location /static/ {</span>
+<span class="sd">        alias $$(static_path)$$;</span>
+<span class="sd">    }</span>
+
+<span class="sd">    # Раздача медиа файлов</span>
+<span class="sd">    #location /media/ {</span>
+<span class="sd">    #        root  $Work_dir/$Name_proj/media;</span>
+<span class="sd">    #}</span>
+<span class="sd">}</span>
+<span class="sd">    &quot;&quot;&quot;</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;NGINX_PORT&quot;</span><span class="p">:</span> <span class="n">Nginx</span><span class="o">.</span><span class="n">PORT</span><span class="p">,</span> <span class="s2">&quot;WORK_DIR&quot;</span><span class="p">:</span> <span class="n">Nginx</span><span class="o">.</span><span class="n">WORK_DIR</span><span class="p">,</span> <span class="s2">&quot;NAME_PROJ&quot;</span><span class="p">:</span> <span class="n">project_name</span><span class="p">,</span>
+        <span class="s2">&quot;static_path&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">Nginx</span><span class="o">.</span><span class="n">WORK_DIR</span><span class="si">}{</span><span class="n">path_static</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;root_path&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">Nginx</span><span class="o">.</span><span class="n">WORK_DIR</span><span class="si">}{</span><span class="n">path_public</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">export_var</span> <span class="o">=</span> <span class="p">[</span><span class="n">env</span><span class="p">,</span> <span class="n">npm</span><span class="p">,</span> <span class="n">gitignore</span><span class="p">,</span> <span class="n">nginx</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="index.html" class="btn btn-neutral float-left" title="Навигация" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="api.html" class="btn btn-neutral float-right" title="2. Api" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Denis Kustov.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
