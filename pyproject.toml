@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "configer"
-version = "0.0.2"
+version = "0.0.3"
 description = "Создание файлов конфигураци"
 repository = "https://github.com/denisxab/configer"
 documentation = "https://configer.readthedocs.io/ru/latest/index.html"
