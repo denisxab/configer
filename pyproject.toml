@@ -1,9 +1,9 @@
 [tool.poetry]
 name = "configer"
-version = "0.0.1"
+version = "0.0.2"
 description = "Создание файлов конфигураци"
 repository = "https://github.com/denisxab/configer"
-documentation = "https://configer.readthedocs.io/ru/latest/"
+documentation = "https://configer.readthedocs.io/ru/latest/index.html"
 authors = ["Denis Kustov <denis-kustov@rambler.ru>"]
 
 [tool.poetry.dependencies]
