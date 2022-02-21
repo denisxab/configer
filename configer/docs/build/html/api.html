@@ -127,12 +127,8 @@
 </dd>
 </dl>
 <p>её значение
-:param repl: На что заменить значение если его нужно скрыть</p>
-<dl class="field-list simple">
-<dt class="field-odd">Результат</dt>
-<dd class="field-odd"><p>Текст со скрытыми значениями</p>
-</dd>
-</dl>
+:param repl: На что заменить значение если его нужно скрыть
+:return: Текст со скрытыми значениями</p>
 </dd></dl>
 
 <dl class="py method">
@@ -158,11 +154,17 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="hidiger.HiddenVar.sub_staff">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sub_staff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'_'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#hidiger.HiddenVar.sub_staff" title="Ссылка на это определение"></a></dt>
-<dd><p>Удаляем из исходного кода <cite>Python</cite>:
-- Кавычки
-- Подсказки типов
-- Скобки</p>
-<p>НО при этом длинна текста сохраниться, потому что мы заменяем значение на <cite>repl</cite></p>
+<dd><p>Удаляем из исходного кода <cite>Python</cite>:</p>
+<ul class="simple">
+<li><p>Кавычки</p></li>
+<li><p>Подсказки типов</p></li>
+<li><p>Скобки</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Но при этом длинна текста сохраниться,
+потому что мы заменяем значение на <cite>repl</cite></p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Параметры</dt>
 <dd class="field-odd"><ul class="simple">

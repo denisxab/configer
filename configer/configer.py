@@ -13,7 +13,6 @@ class ConfFile:
     #: Спец символы для вставки значения по ключу
     split_regx: tuple[str, str] = ("\$\$\(", "\)\$\$")
 
-    @classmethod
     def __new__(cls,
                 file_name: str,
                 path_out: str,
@@ -30,7 +29,7 @@ class ConfFile:
         logger.info(f"{file_name}", flag="TEMPLATE")
         template: str = cls.parse_template(template, kwargs)
         _path: str = path.join(path_out, file_name)
-        TxtFile(_path, type_file=".py").writeFile(template)
+        TxtFile(_path, type_file=None).writeFile(template)
         logger.info(_path, flag="FILE_WRITE")
 
         return None

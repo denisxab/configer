@@ -6,7 +6,6 @@ Api
    :special-members: __new__
 
 
-
 .. autoclass:: hidiger.HiddenVar
    :members:
    :special-members: __new__

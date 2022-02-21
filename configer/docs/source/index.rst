@@ -12,7 +12,7 @@
 
 .. toctree::
    :numbered:
-
+   :caption: Оглавление:
 
    use_guid
    api
