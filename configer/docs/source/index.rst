@@ -6,10 +6,6 @@
 * :ref:`search`
 
 
-
-Оглавление
-==========
-
 .. toctree::
    :numbered:
    :caption: Оглавление:

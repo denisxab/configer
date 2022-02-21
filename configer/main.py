@@ -32,7 +32,8 @@ def parseconf(infile):
 @argument('infile', nargs=1, type=click.Path(dir_okay=False, exists=True))
 @click.option('outfile', "-o", "--outfile",
               default=None,
-              show_default="Там же где исходный файл конфигураций",
+              show_default="Там же где исходный файл конфигураций с именем `conf_pub.py`",
+              help="Путь для сохранения итогового файла",
               type=click.Path(dir_okay=False, file_okay=True))
 def hideconf(infile: str, outfile: str):
     """

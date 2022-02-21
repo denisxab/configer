@@ -1,8 +1,10 @@
 [tool.poetry]
 name = "configer"
-version = "0.1.0"
+version = "0.0.1"
 description = "Создание файлов конфигураци"
-authors = ["Denis kustov <denis-kustov@rambler.ru>"]
+repository = "https://github.com/denisxab/configer"
+documentation = "https://configer.readthedocs.io/ru/latest/"
+authors = ["Denis Kustov <denis-kustov@rambler.ru>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"

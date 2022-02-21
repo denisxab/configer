@@ -1,6 +1,6 @@
-_hide_ADMIN_PANEL: tuple[str, str, str] =___
-_hide_SESSION_SECRET_KEY =___
-_hide_SQL_URL: str =___
+_hide_ADMIN_PANEL: tuple[str, str, str] = ("user", "password", "emal")
+_hide_SESSION_SECRET_KEY = "qQWEdqwdwqefASDQF4qw4h3ofv3vw3oervwg532gg5"
+_hide_SQL_URL: str = "postgresql+asyncpg://postgres:root@localhost/fast"
 
 host = "0.0.0.0"
 port = 8080

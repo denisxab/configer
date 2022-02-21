@@ -7,11 +7,16 @@
 
 ## Установка
 
-1) Скачать `configer.bin`
-2) Добавить алис
+1) Скачать `configer.bin` из репозитория
+2) Добавить `alias` в консоль
 
   ```bash
-  alias -g configer="$ПутьГдеРасположенСonfiger$.bin";
+  alias -g configer="$ПутьГдеРасположенСonfiger$.bin"
+  ```
+
+3) Проверим правильность указания пути
+
+  ```bash
   configer --help
   ```
 
@@ -19,11 +24,17 @@
 
 ### Консольные команды
 
-Скомпилировать конфигурационные файлы
+- Скомпилировать конфигурационные файлы
 
-```bash
-configer $ПутьКонфигурациям$.py
-```
+  ```bash
+  configer parseconf $ПутьКонфигурациям$.py
+  ```
+
+- Сделать копию и скрыть данные
+
+  ```bash
+  configer hideconf $ПутьКонфигурациям$.py
+  ```
 
 ### Создание файла конфигураций
 
@@ -41,6 +52,7 @@ configer $ПутьКонфигурациям$.py
 
 ```python
 port = 8080
+
 env = ("__env.env", "./test", """
 ## Django
 # Ключ для расшифровки сессии
@@ -67,6 +79,12 @@ export_var = [
 ]
 ```
 
+Выполним команду
+
+```bash
+configer parseconf conf.py
+```
+
 В итоге мы получим файл, расположенный в `./test/__env.env`. Содержание
 
 ```text
@@ -89,10 +107,84 @@ NGINX_PORT=8080
 Логи
 
 ```text
-2022-02-09 22:26:06.425 | INFO     | __main__:parse_conf:24 - [VAR] env
-2022-02-09 22:26:06.425 | INFO     | main:__init__:27 - [TEMPLATE] __env.env
-2022-02-09 22:26:06.426 | INFO     | main:parse_template:40 - [FIND] ['secret_key', 'project_name', 'project_name', 'port']
-2022-02-09 22:26:06.426 | INFO     | main:writeFile:55 - [FILE_WRITE] ./test/__env.env
+[INFO][TEMPLATE]:'__env.env'
+[INFO][FIND]:['secret_key', 'project_name', 'project_name', 'port']
+[INFO][FILE_WRITE]:'/home/denis/PycharmProjects/configer/configer/test/data_set/__env.env'
+[INFO][VAR_CREATE]:'__env.env'
+```
+
+## Сделать копию и скрыть данные
+
+Почти всегда нам нужно иметь в проекте секретные(приватные) данные, которые не должны стать публичными. У нас есть
+возможность создавать копию конфигурации со скрытыми данными.
+
+Для того чтобы указать переменную у которой нужно скрыть значения, напишите в начел её имени `_hide_`
+
+---
+
+Пример, нам нужно скрыть данные `url` для подключения к БД, ключ для шифрования сессии, данные для входа в админ панель,
+ну или любые другие данные. Для того чтобы сделать копию этой конфигурации, например, для того чтобы сохранить всю
+логики, но при этом скрыть выше указанные данные, мы указываем в начале имени `_hide_`, в итоге мы получим
+файл `conf_pub.py` который можно спокойно хранить в открытом доступе, например в `GitHab`.
+
+```python
+_hide_SQL_URL: str = "postgresql+asyncpg://postgres:root@localhost/fast"
+_hide_SESSION_SECRET_KEY = "qQWEdqwdwqefASDQF4qw4h3ofv3vw3oervwg532gg5"
+_hide_ADMIN_PANEL: tuple[str, str, str] = ("user", "password", "emal")
+
+host = "0.0.0.0"
+port = 8080
+
+env = ("__env.env", "./test", """
+SQL_URL = $$(sql_url)$$
+SESSION_SECRET_KEY = $$(session_secret_kry)$$
+ADMIN_PANEL = $$(admin_panel)$$
+"""[1:], {
+    "sql_url": _hide_SQL_URL,
+    "session_secret_kry": _hide_SESSION_SECRET_KEY,
+    "port": port,
+})
+export_var = [
+    env
+]
+```
+
+Выполним команду
+
+```bash
+configer hideconf conf.py
+```
+
+В итоге мы получим копию, расположенный в `./conf_pub.py`. Содержание
+
+```python
+_hide_ADMIN_PANEL: tuple[str, str, str] = ___
+_hide_SESSION_SECRET_KEY = ___
+_hide_SQL_URL: str = ___
+
+host = "0.0.0.0"
+port = 8080
+
+env = ("__env.env", "./test", """
+SQL_URL = $$(sql_url)$$
+SESSION_SECRET_KEY = $$(session_secret_kry)$$
+ADMIN_PANEL = $$(admin_panel)$$
+"""[1:], {
+    "sql_url": _hide_SQL_URL,
+    "session_secret_kry": _hide_SESSION_SECRET_KEY,
+    "port": port,
+})
+export_var = [
+    env
+]
+```
+
+Логи
+
+```text
+[INFO][VAR_HIDE]:'_hide_ADMIN_PANEL: tuple[str, str, str]'
+[INFO][VAR_HIDE]:'_hide_SESSION_SECRET_KEY'
+[INFO][VAR_HIDE]:'_hide_SQL_URL: str '
 ```
 
 ## Реальный пример конфигурации

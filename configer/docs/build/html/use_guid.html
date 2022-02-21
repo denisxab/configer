@@ -39,7 +39,8 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
-              <ul class="current">
+              <p class="caption" role="heading"><span class="caption-text">Оглавление:</span></p>
+<ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">1. Быстрый старт</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">1.1. Что это</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">1.2. Установка</a></li>
@@ -48,7 +49,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#id6">1.3.2. Создание файла конфигураций</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id7">1.4. Реальный пример конфигурации</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">1.4. Сделать копию и скрыть данные</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">1.5. Реальный пример конфигурации</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">2. Api</a></li>
@@ -102,10 +104,18 @@ configer --help
 <h2><span class="section-number">1.3. </span>Использование<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
 <section id="id5">
 <h3><span class="section-number">1.3.1. </span>Консольные команды<a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h3>
-<p>Скомпилировать конфигурационные файлы</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>configer $ПутьКонфигурациям$.py
+<ul>
+<li><p>Скомпилировать конфигурационные файлы</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>configer parseconf $ПутьКонфигурациям$.py
 </pre></div>
 </div>
+</li>
+<li><p>Сделать копию и скрыть данные</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>configer hideconf $ПутьКонфигурациям$.py
+</pre></div>
+</div>
+</li>
+</ul>
 </section>
 <section id="id6">
 <h3><span class="section-number">1.3.2. </span>Создание файла конфигураций<a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h3>
@@ -126,6 +136,7 @@ configer --help
 <div><p>Эти значения подставится в <code class="docutils literal notranslate"><span class="pre">ConfFile(*args)</span></code></p>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">port</span> <span class="o">=</span> <span class="mi">8080</span>
+
 <span class="n">env</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;__env.env&quot;</span><span class="p">,</span> <span class="s2">&quot;./test&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">## Django</span>
 <span class="s2"># Ключ для расшифровки сессии</span>
@@ -152,6 +163,10 @@ configer --help
 <span class="p">]</span>
 </pre></div>
 </div>
+<p>Выполним команду</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>configer parseconf conf.py
+</pre></div>
+</div>
 <p>В итоге мы получим файл, расположенный в <code class="docutils literal notranslate"><span class="pre">./test/__env.env</span></code>. Содержание</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>## Django
 # Ключ для расшифровки сессии
@@ -170,16 +185,80 @@ NGINX_PORT=8080
 </pre></div>
 </div>
 <p>Логи</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>2022-02-09 22:26:06.425 | INFO     | __main__:parse_conf:24 - [VAR] env
-2022-02-09 22:26:06.425 | INFO     | main:__init__:27 - [TEMPLATE] __env.env
-2022-02-09 22:26:06.426 | INFO     | main:parse_template:40 - [FIND] [&#39;secret_key&#39;, &#39;project_name&#39;, &#39;project_name&#39;, &#39;port&#39;]
-2022-02-09 22:26:06.426 | INFO     | main:writeFile:55 - [FILE_WRITE] ./test/__env.env
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[INFO][TEMPLATE]:&#39;__env.env&#39;
+[INFO][FIND]:[&#39;secret_key&#39;, &#39;project_name&#39;, &#39;project_name&#39;, &#39;port&#39;]
+[INFO][FILE_WRITE]:&#39;/home/denis/PycharmProjects/configer/configer/test/data_set/__env.env&#39;
+[INFO][VAR_CREATE]:&#39;__env.env&#39;
 </pre></div>
 </div>
 </section>
 </section>
 <section id="id7">
-<h2><span class="section-number">1.4. </span>Реальный пример конфигурации<a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h2>
+<h2><span class="section-number">1.4. </span>Сделать копию и скрыть данные<a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h2>
+<p>Почти всегда нам нужно иметь в проекте секретные(приватные) данные, которые не должны стать публичными. У нас есть
+возможность создавать копию конфигурации со скрытыми данными.</p>
+<p>Для того чтобы указать переменную у которой нужно скрыть значения, напишите в начел её имени <code class="docutils literal notranslate"><span class="pre">_hide_</span></code></p>
+<hr class="docutils" />
+<p>Пример, нам нужно скрыть данные <code class="docutils literal notranslate"><span class="pre">url</span></code> для подключения к БД, ключ для шифрования сессии, данные для входа в админ панель,
+ну или любые другие данные. Для того чтобы сделать копию этой конфигурации, например, для того чтобы сохранить всю
+логики, но при этом скрыть выше указанные данные, мы указываем в начале имени <code class="docutils literal notranslate"><span class="pre">_hide_</span></code>, в итоге мы получим
+файл <code class="docutils literal notranslate"><span class="pre">conf_pub.py</span></code> который можно спокойно хранить в открытом доступе, например в <code class="docutils literal notranslate"><span class="pre">GitHab</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">_hide_SQL_URL</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;postgresql+asyncpg://postgres:root@localhost/fast&quot;</span>
+<span class="n">_hide_SESSION_SECRET_KEY</span> <span class="o">=</span> <span class="s2">&quot;qQWEdqwdwqefASDQF4qw4h3ofv3vw3oervwg532gg5&quot;</span>
+<span class="n">_hide_ADMIN_PANEL</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span> <span class="s2">&quot;emal&quot;</span><span class="p">)</span>
+
+<span class="n">host</span> <span class="o">=</span> <span class="s2">&quot;0.0.0.0&quot;</span>
+<span class="n">port</span> <span class="o">=</span> <span class="mi">8080</span>
+
+<span class="n">env</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;__env.env&quot;</span><span class="p">,</span> <span class="s2">&quot;./test&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">SQL_URL = $$(sql_url)$$</span>
+<span class="s2">SESSION_SECRET_KEY = $$(session_secret_kry)$$</span>
+<span class="s2">ADMIN_PANEL = $$(admin_panel)$$</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="p">{</span>
+    <span class="s2">&quot;sql_url&quot;</span><span class="p">:</span> <span class="n">_hide_SQL_URL</span><span class="p">,</span>
+    <span class="s2">&quot;session_secret_kry&quot;</span><span class="p">:</span> <span class="n">_hide_SESSION_SECRET_KEY</span><span class="p">,</span>
+    <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="n">port</span><span class="p">,</span>
+<span class="p">})</span>
+<span class="n">export_var</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">env</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Выполним команду</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>configer hideconf conf.py
+</pre></div>
+</div>
+<p>В итоге мы получим копию, расположенный в <code class="docutils literal notranslate"><span class="pre">./conf_pub.py</span></code>. Содержание</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">_hide_ADMIN_PANEL</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">___</span>
+<span class="n">_hide_SESSION_SECRET_KEY</span> <span class="o">=</span> <span class="n">___</span>
+<span class="n">_hide_SQL_URL</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">___</span>
+
+<span class="n">host</span> <span class="o">=</span> <span class="s2">&quot;0.0.0.0&quot;</span>
+<span class="n">port</span> <span class="o">=</span> <span class="mi">8080</span>
+
+<span class="n">env</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;__env.env&quot;</span><span class="p">,</span> <span class="s2">&quot;./test&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">SQL_URL = $$(sql_url)$$</span>
+<span class="s2">SESSION_SECRET_KEY = $$(session_secret_kry)$$</span>
+<span class="s2">ADMIN_PANEL = $$(admin_panel)$$</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="p">{</span>
+    <span class="s2">&quot;sql_url&quot;</span><span class="p">:</span> <span class="n">_hide_SQL_URL</span><span class="p">,</span>
+    <span class="s2">&quot;session_secret_kry&quot;</span><span class="p">:</span> <span class="n">_hide_SESSION_SECRET_KEY</span><span class="p">,</span>
+    <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="n">port</span><span class="p">,</span>
+<span class="p">})</span>
+<span class="n">export_var</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">env</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Логи</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[INFO][VAR_HIDE]:&#39;_hide_ADMIN_PANEL: tuple[str, str, str]&#39;
+[INFO][VAR_HIDE]:&#39;_hide_SESSION_SECRET_KEY&#39;
+[INFO][VAR_HIDE]:&#39;_hide_SQL_URL: str &#39;
+</pre></div>
+</div>
+</section>
+<section id="id8">
+<h2><span class="section-number">1.5. </span>Реальный пример конфигурации<a class="headerlink" href="#id8" title="Ссылка на этот заголовок"></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Режим работы</span>
 <span class="n">DEBUG</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="c1"># Имя проекта</span>

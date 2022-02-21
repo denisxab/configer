@@ -49,10 +49,14 @@ class HiddenVar:
         :param repl: На что заменить
         :return: Текст без скобок и ковы чек и подсказок типа
         """
+
+        #: Что должно быть в кавычках
+        templ_ = "\w\d\s_.,/'@\+\-#$:=\[\]\(\)\{\}"
+
         # Вырезаем одинарные и двойные кавычки
-        template_rep_quotation_mark = """['"]{1}[\w\d\s_.,/'#$:=\[\]\(\)\{\}]+['"]{1}"""
+        template_rep_quotation_mark = """['"]{1}[%s]+['"]{1}""" % (templ_,)
         # Вырезать трое двойных кавычек
-        template_rep_quotation_mark_three = """['"]{3}[\w\d\s_.,/'"#$:=\[\]\(\)\{\}]+['"]{3}"""
+        template_rep_quotation_mark_three = """['"]{3}[%s]+['"]{3}""" % (templ_,)
         res = sub(f"{template_rep_quotation_mark}|{template_rep_quotation_mark_three}",
                   lambda m: f"{repl}" * len(m.group()),
                   text)
