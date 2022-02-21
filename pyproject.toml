@@ -5,6 +5,16 @@ description = "Создание файлов конфигураци"
 repository = "https://github.com/denisxab/configer"
 documentation = "https://configer.readthedocs.io/ru/latest/index.html"
 authors = ["Denis Kustov <denis-kustov@rambler.ru>"]
+readme = "README.md"
+exclude = [
+    "configer/.idea",
+    "configer/venv",
+    "configer/.git",
+    "configer/.gitignore",
+    "configer/docs",
+    "configer/test",
+    "configer/Makefile"
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"
