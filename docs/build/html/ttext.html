@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4. Шаблонный текст &mdash; документация configer 0.0.1</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="5. Генерация кода" href="tcode.html" />
+    <link rel="prev" title="3. Сделать копию и скрыть данные" href="hideconf.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> configer
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Оглавление:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="use_guid.html">1. Быстрый старт</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parseconf.html">2. Создание файлов конфигурации</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hideconf.html">3. Сделать копию и скрыть данные</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Шаблонный текст</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configer-ttext">4.1. 1 Файл с шаблонами (<code class="docutils literal notranslate"><span class="pre">configer</span> <span class="pre">ttext</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tcode.html">5. Генерация кода</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">6. Api</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#id1">7. Пояснение магических переменных</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">configer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><span class="section-number">4. </span>Шаблонный текст</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/ttext.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1><span class="section-number">4. </span>Шаблонный текст<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<section id="configer-ttext">
+<h2><span class="section-number">4.1. </span>1 Файл с шаблонами (<code class="docutils literal notranslate"><span class="pre">configer</span> <span class="pre">ttext</span></code>)<a class="headerlink" href="#configer-ttext" title="Ссылка на этот заголовок"></a></h2>
+<p>Для того чтобы указать какие переменные нужно рассматривать в качестве команд, их нужно поместить в переменную
+<code class="docutils literal notranslate"><span class="pre">EXPORT_TEMPLATE</span></code>, переменная с конфигурациями должна соответствовать правилам, это должен быть картеж со следующим порядком
+значений: <code class="xref py py-class docutils literal notranslate"><span class="pre">logic_helpful.spec_name</span></code>, эти значения подставится в <code class="xref py py-meth docutils literal notranslate"><span class="pre">logic_ttext.ttextLogic.parse_export()</span></code></p>
+<p>У вас есть следующие возможности:</p>
+<ul class="simple">
+<li><p>Одинаковые ключевые имена имеют одинаковые значения.</p></li>
+<li><p>Возможность переопределять значение ключей. Ключи которые не переопределены становится значениями по умолчанию.</p></li>
+<li><p>Одни и те же ключевые имена могу по разному оформляться. Эту логику пользователь может как угодно реализовывать через функции. Для того чтобы обработать ключевое имя через функции нужно написать в шаблоне <code class="docutils literal notranslate"><span class="pre">$$(ИмяКлюча|ИмяФункции)$$</span></code>, и передать последним значением словарь <code class="docutils literal notranslate"><span class="pre">{&quot;ИмяФункции&quot;:</span> <span class="pre">СсылкаНаФункцию}</span></code>. Ссылка на функцию должна быть типа <code class="docutils literal notranslate"><span class="pre">typing.Callable[[str,</span> <span class="pre">dict[str,</span> <span class="pre">str],</span> <span class="pre">str],</span> <span class="pre">str]</span></code>.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">configer/test/in/public/ttext/conf.py</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">re</span> <span class="kn">import</span> <span class="n">sub</span><span class="p">,</span> <span class="n">split</span><span class="p">,</span> <span class="n">search</span>
+
+<span class="kn">from</span> <span class="nn">logic_helpful</span> <span class="kn">import</span> <span class="n">SPLIT_REGX_START</span><span class="p">,</span> <span class="n">SPLIT_REGX_END</span>
+<span class="kn">from</span> <span class="nn">useconf</span> <span class="kn">import</span> <span class="n">export_template</span>
+
+
+<span class="k">def</span> <span class="nf">quotes_comma</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">template</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Текста в кавычках через запятую</span>
+
+<span class="sd">    &gt;&gt;&gt; quotes_comma(&quot;a, b, c&quot;)</span>
+<span class="sd">    &#39;&quot;a&quot;, &quot;b&quot;, &quot;c&quot;&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="s1">&#39;&quot;</span><span class="si">{0}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;&quot;, &quot;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; *, *&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)))</span>
+
+
+<span class="k">def</span> <span class="nf">comma</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">template</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Текста через запятую</span>
+
+<span class="sd">    &gt;&gt;&gt; comma(&quot;a,    b,  c&quot;)</span>
+<span class="sd">    &#39;a, b, c&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">sub</span><span class="p">(</span><span class="s1">&#39;[</span><span class="se">\t</span><span class="s1"> ]+&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">tuple_srt</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">template</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Вставки картежей по колличеству аргументов</span>
+
+<span class="sd">    &gt;&gt;&gt; tuple_srt(&quot;a, b, c&quot;)</span>
+<span class="sd">    &#39;(&quot; &quot;, &quot; &quot;, &quot; &quot;,)&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="s1">&#39;(</span><span class="si">{0}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;&quot; &quot;,&#39;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)))</span>
+
+
+<span class="k">def</span> <span class="nf">tuple_int</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">template</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Вставки картежей по колличеству аргументов</span>
+
+<span class="sd">    &gt;&gt;&gt; tuple_int(&quot;a, b, c&quot;)</span>
+<span class="sd">    &#39;(0, 0, 0,)&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="s1">&#39;(</span><span class="si">{0}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;0, &#39;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)))</span>
+
+
+<span class="k">def</span> <span class="nf">create_assert</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">template</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Создание ассертов</span>
+
+<span class="sd">    &gt;&gt;&gt; create_assert(&quot;a, b, c&quot;)</span>
+<span class="sd">    assert a == 0, &#39;&#39;\nassert b == 0, &#39;&#39;\nassert c == 0, &#39;&#39;\n</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">padding</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">search</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(?P&lt;padding&gt;[</span><span class="se">\t</span><span class="s2"> ]*)</span><span class="si">{</span><span class="n">SPLIT_REGX_START</span><span class="si">}</span><span class="s2">[\w\d_]+\|create_assert</span><span class="si">{</span><span class="n">SPLIT_REGX_END</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                          <span class="n">template</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s1">&#39;padding&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;assert </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1"> == 0, &quot;&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">padding</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)])</span>
+
+
+<span class="k">def</span> <span class="nf">params</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">template</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Создание параметров</span>
+
+<span class="sd">    &gt;&gt;&gt; params(&quot;a, b, c&quot;)</span>
+<span class="sd">    \n:params a:\n:params b:\n:params c:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">padding</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">search</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(?P&lt;padding&gt;[</span><span class="se">\t</span><span class="s2"> ]*)</span><span class="si">{</span><span class="n">SPLIT_REGX_START</span><span class="si">}</span><span class="s2">[\w\d_]+\|create_assert</span><span class="si">{</span><span class="n">SPLIT_REGX_END</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                          <span class="n">template</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s1">&#39;padding&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="si">{</span><span class="n">padding</span><span class="si">}</span><span class="s1">:params </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1">:&#39;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)])</span>
+
+
+<span class="n">EXPORT_TEMPLATE</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;pytest&quot;</span><span class="p">:</span> <span class="n">export_template</span><span class="p">(</span>
+        <span class="n">template</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">@pytest.mark.parametrize(</span>
+<span class="s1">                ($$(args|quotes_comma)$$),</span>
+<span class="s1">                [</span>
+<span class="s1">                    $$(args|tuple_quotes)$$,</span>
+<span class="s1">                ]</span>
+<span class="s1">)</span>
+<span class="s1">def test_$$(name)$$(self, $$(args|comma)$$):</span>
+<span class="s1">    &quot;&quot;&quot;</span>
+<span class="s1">    $$(doc)$$</span>
+
+<span class="s1">    $$(args|params)$$</span>
+<span class="s1">    &quot;&quot;&quot;</span>
+
+<span class="s1">    $$(args|create_assert)$$</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
+        <span class="n">kwargs</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s1">&#39;doc&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="n">func</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;quotes_comma&quot;</span><span class="p">:</span> <span class="n">quotes_comma</span><span class="p">,</span>
+            <span class="s2">&quot;tuple_quotes&quot;</span><span class="p">:</span> <span class="n">tuple_int</span><span class="p">,</span>
+            <span class="s2">&quot;comma&quot;</span><span class="p">:</span> <span class="n">comma</span><span class="p">,</span>
+            <span class="s1">&#39;create_assert&#39;</span><span class="p">:</span> <span class="n">create_assert</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="n">params</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">),</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Выполним команду</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>configer ttext <span class="s2">&quot;pytest&quot;</span>               <span class="se">\</span>
+-k <span class="s2">&quot;name=sum&quot;</span>                         <span class="se">\</span>
+-k <span class="s2">&quot;doc=Тестирование суммирования&quot;</span>    <span class="se">\</span>
+-k <span class="s2">&quot;args=a, b, c&quot;</span>
+</pre></div>
+</div>
+<p>В итоге получим</p>
+<dl class="field-list simple">
+<dt class="field-odd">configer/test/out/public/ttext/template.py</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span>
+                <span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">),</span>
+                <span class="p">(</span>
+                    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">)</span>
+                <span class="p">)</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">test_sum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span> <span class="c1"># Все методы должны начинаться со слова `test_`</span>
+    <span class="sd">&quot;&quot;&quot;Тестирование суммирования &quot;&quot;&quot;</span>
+    
+    <span class="k">assert</span> <span class="nb">sum</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="o">==</span> <span class="mi">6</span><span class="p">,</span> <span class="s2">&quot;Ошибка суммирования&quot;</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="hideconf.html" class="btn btn-neutral float-left" title="3. Сделать копию и скрыть данные" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="tcode.html" class="btn btn-neutral float-right" title="5. Генерация кода" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Denis Kustov.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

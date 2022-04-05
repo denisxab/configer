@@ -1,0 +1,9 @@
+/.idea
+/venvs
+/venv
+/configer/main.build
+__pycache__/
+/main.build
+/configer.bin
+/configer/test/.pytest_cache
+/store_configer.json

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6. Api &mdash; документация configer 0.0.1</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="prev" title="5. Генерация кода" href="tcode.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> configer
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Оглавление:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="use_guid.html">1. Быстрый старт</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parseconf.html">2. Создание файлов конфигурации</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hideconf.html">3. Сделать копию и скрыть данные</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ttext.html">4. Шаблонный текст</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tcode.html">5. Генерация кода</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. Api</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#id1">7. Пояснение магических переменных</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">configer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><span class="section-number">6. </span>Api</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="api">
+<h1><span class="section-number">6. </span>Api<a class="headerlink" href="#api" title="Ссылка на этот заголовок"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="logic.parseconf.parseconfLogic">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logic.parseconf.</span></span><span class="sig-name descname"><span class="pre">parseconfLogic</span></span><a class="headerlink" href="#logic.parseconf.parseconfLogic" title="Ссылка на это определение"></a></dt>
+<dd><p>Класс для работы с файлом конфигурации</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="logic.parseconf.parseconfLogic.parseconf">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parseconf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_path_conf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logic.parseconf.parseconfLogic.parseconf" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="logic.hideconf.hideconfLogic">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logic.hideconf.</span></span><span class="sig-name descname"><span class="pre">hideconfLogic</span></span><a class="headerlink" href="#logic.hideconf.hideconfLogic" title="Ссылка на это определение"></a></dt>
+<dd><p>Скрыть данные значений из файла с конфигурациями</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="logic.hideconf.hideconfLogic.hideconf">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hideconf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_path_conf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outfile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logic.hideconf.hideconfLogic.hideconf" title="Ссылка на это определение"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_path_conf</strong> – Путь к файлу конфигураций</p></li>
+<li><p><strong>outfile</strong> – Путь для сохранения итогового файла</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="logic.tcode.tcodeLogic">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logic.tcode.</span></span><span class="sig-name descname"><span class="pre">tcodeLogic</span></span><a class="headerlink" href="#logic.tcode.tcodeLogic" title="Ссылка на это определение"></a></dt>
+<dd><p><a class="reference internal" href="tcode.html"><span class="doc">tcode</span></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="logic.tcode.tcodeLogic.infile">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">infile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">insert_text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_path_conf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logic.tcode.tcodeLogic.infile" title="Ссылка на это определение"></a></dt>
+<dd><p>Вставить в текст готовые блоки с кодом</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>insert_text</strong> – </p></li>
+<li><p><strong>_path_conf</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="logic.tcode.tcodeLogic.print">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">print</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name_command</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_path_conf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logic.tcode.tcodeLogic.print" title="Ссылка на это определение"></a></dt>
+<dd><p>Вернуть готовый блок с кодом</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name_command</strong> – </p></li>
+<li><p><strong>lang</strong> – </p></li>
+<li><p><strong>_path_conf</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="logic.tcode.tcodeLogic.upfile">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">upfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_update_text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_path_conf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#logic.tcode.tcodeLogic.upfile" title="Ссылка на это определение"></a></dt>
+<dd><p>Обновить текст если хеш отличается от готового кода</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>from_update_text</strong> – </p></li>
+<li><p><strong>_path_conf</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="logic.ttext.ttextLogic">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logic.ttext.</span></span><span class="sig-name descname"><span class="pre">ttextLogic</span></span><a class="headerlink" href="#logic.ttext.ttextLogic" title="Ссылка на это определение"></a></dt>
+<dd><p><a class="reference internal" href="ttext.html"><span class="doc">ttext</span></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="logic.ttext.ttextLogic.ttext">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ttext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name_command</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overload_kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_conf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#logic.ttext.ttextLogic.ttext" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-useconf"></span><dl class="py function">
+<dt class="sig sig-object py" id="useconf.autotests">
+<span class="sig-prename descclassname"><span class="pre">useconf.</span></span><span class="sig-name descname"><span class="pre">autotests</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'in'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'out'</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="headerlink" href="#useconf.autotests" title="Ссылка на это определение"></a></dt>
+<dd><p>Функция для создания тестов</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><p><strong>args</strong> – Входные и выходные данные</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;in&quot;</span><span class="p">:</span><span class="s2">&quot;входные&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;out&quot;</span><span class="p">:</span><span class="s2">&quot;выходные&quot;</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Разрабатывается поддержка для многих языков</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="useconf.export_code">
+<span class="sig-prename descclassname"><span class="pre">useconf.</span></span><span class="sig-name descname"><span class="pre">export_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template_lange</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="headerlink" href="#useconf.export_code" title="Ссылка на это определение"></a></dt>
+<dd><p>Помощник для создания экспорта <a class="reference internal" href="tcode.html"><span class="doc">tcode</span></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>template_lange</strong> – Язык программирования</p></li>
+<li><p><strong>kwargs</strong> – Ключи для шаблонов, которые доступны во всех языках</p></li>
+</ul>
+</dd>
+</dl>
+<p>Для <a class="reference internal" href="tcode.html"><span class="doc">tcode</span></a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">EXPORT_COMMAND</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;ИмяКоманды&quot;</span><span class="p">:</span> <span class="n">export_code</span><span class="p">(</span>
+        <span class="n">template_lange</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;ЯзыкПрограммирования_1&quot;</span><span class="p">:</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">Пример вставки ключа $$(Ключ_1)$$</span>
+<span class="s1">Вставить где угодно готовый тест $$(TEST)$$</span>
+<span class="s1">                        &#39;&#39;&#39;</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
+        <span class="p">},</span>
+        <span class="c1">#: Ключи для замены, доступны во всех языках</span>
+        <span class="n">kwargs</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;Ключ_1&quot;</span><span class="p">:</span> <span class="s2">&quot;Значение&quot;</span><span class="p">,</span>
+
+            <span class="c1">#: Опционально !</span>
+            <span class="c1">#: Создание тестов ключевое слово ``TEST``</span>
+            <span class="s2">&quot;TEST&quot;</span><span class="p">:</span> <span class="n">autotests</span><span class="p">(</span>
+                <span class="c1"># Тест_1</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;in&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span>
+                    <span class="s2">&quot;out&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span>
+                <span class="p">},</span>
+            <span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="useconf.export_path">
+<span class="sig-prename descclassname"><span class="pre">useconf.</span></span><span class="sig-name descname"><span class="pre">export_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">namefile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">isrewrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="headerlink" href="#useconf.export_path" title="Ссылка на это определение"></a></dt>
+<dd><p>Помощник для создания экспорта <a class="reference internal" href="parseconf.html"><span class="doc">parseconf</span></a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">EXPORT_PATH</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">export_var</span><span class="p">(</span>
+        <span class="n">namefile</span><span class="o">=</span><span class="s2">&quot;ИмяФайла&quot;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;ПутьДляСохранения&quot;</span><span class="p">,</span>
+        <span class="n">template</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">Пример вставки ключа $$(Ключ_1)$$</span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
+        <span class="c1"># Ключи для замены</span>
+        <span class="n">kwargs</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;Ключ_1&quot;</span><span class="p">:</span> <span class="s2">&quot;Значение&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="c1">#: Опционально !</span>
+        <span class="c1">#: Перезаписать файл если он существует (по умолчанию нет)</span>
+        <span class="n">isrewrite</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="useconf.export_template">
+<span class="sig-prename descclassname"><span class="pre">useconf.</span></span><span class="sig-name descname"><span class="pre">export_template</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#useconf.ttext_func" title="useconf.ttext_func"><span class="pre">useconf.ttext_func</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#useconf.export_template" title="Ссылка на это определение"></a></dt>
+<dd><p>Помощник для создания экспорта <a class="reference internal" href="ttext.html"><span class="doc">ttext</span></a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Функция</span><span class="p">(</span><span class="n">text</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">:</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">template</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+
+<span class="n">EXPORT_TEMPLATE</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;ИмяШаблона&quot;</span><span class="p">:</span> <span class="n">export_template</span><span class="p">(</span>
+        <span class="n">template</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">Вот пример вставки ключа, после обработки переданной функцией $$(Ключ_1|ИмяФункции_1)$$</span>
+<span class="s1">          &#39;&#39;&#39;</span><span class="p">,</span>
+        <span class="c1"># Ключи для замены</span>
+        <span class="n">kwargs</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;Ключ_1&quot;</span><span class="p">:</span> <span class="s2">&quot;Значение&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+
+        <span class="c1">#: Опционально !</span>
+        <span class="c1">#: Ключевые функции</span>
+        <span class="n">func</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;ИмяФункции_1&quot;</span><span class="p">:</span> <span class="n">Функция</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">),</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="useconf.ttext_func">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">useconf.</span></span><span class="sig-name descname"><span class="pre">ttext_func</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#useconf.ttext_func" title="Ссылка на это определение"></a></dt>
+<dd><p>Оформление функции для <code class="docutils literal notranslate"><span class="pre">ttext</span></code></p>
+</dd></dl>
+
+</section>
+<section id="id1">
+<h1><span class="section-number">7. </span>Пояснение магических переменных<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="logic.helpful.spec_name">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logic.helpful.</span></span><span class="sig-name descname"><span class="pre">spec_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logic.helpful.spec_name" title="Ссылка на это определение"></a></dt>
+<dd><p>Специальные(Зарезервированные) имена переменных</p>
+<p>Шаблон файла с конфигурациями</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logic.helpful.spec_name.EXPORT_COMMAND">
+<span class="sig-name descname"><span class="pre">EXPORT_COMMAND</span></span><a class="headerlink" href="#logic.helpful.spec_name.EXPORT_COMMAND" title="Ссылка на это определение"></a></dt>
+<dd><p><a class="reference internal" href="#useconf.export_code" title="useconf.export_code"><code class="xref py py-meth docutils literal notranslate"><span class="pre">useconf.export_code()</span></code></a></p>
+<p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]]]</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logic.helpful.spec_name.EXPORT_PATH">
+<span class="sig-name descname"><span class="pre">EXPORT_PATH</span></span><a class="headerlink" href="#logic.helpful.spec_name.EXPORT_PATH" title="Ссылка на это определение"></a></dt>
+<dd><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">useconf.export_var()</span></code></p>
+<p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>]]</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logic.helpful.spec_name.EXPORT_TEMPLATE">
+<span class="sig-name descname"><span class="pre">EXPORT_TEMPLATE</span></span><a class="headerlink" href="#logic.helpful.spec_name.EXPORT_TEMPLATE" title="Ссылка на это определение"></a></dt>
+<dd><p><a class="reference internal" href="#useconf.export_template" title="useconf.export_template"><code class="xref py py-meth docutils literal notranslate"><span class="pre">useconf.export_template()</span></code></a></p>
+<p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]]]</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="tcode.html" class="btn btn-neutral float-left" title="5. Генерация кода" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Denis Kustov.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

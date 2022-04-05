@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5. Генерация кода &mdash; документация configer 0.0.1</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="6. Api" href="api.html" />
+    <link rel="prev" title="4. Шаблонный текст" href="ttext.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> configer
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Оглавление:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="use_guid.html">1. Быстрый старт</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parseconf.html">2. Создание файлов конфигурации</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hideconf.html">3. Сделать копию и скрыть данные</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ttext.html">4. Шаблонный текст</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Генерация кода</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configer-tcode-print">5.1. 1 Файл с командами (<code class="docutils literal notranslate"><span class="pre">configer</span> <span class="pre">tcode</span> <span class="pre">print</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test">5.2. 2 Авто создание тестов (<code class="docutils literal notranslate"><span class="pre">TEST</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configer-tcode-infile">5.3. 3 Вставка шаблона в файл (<code class="docutils literal notranslate"><span class="pre">configer</span> <span class="pre">tcode</span> <span class="pre">infile</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configer-tcode-upfile">5.4. 4 Авто обновление в файлах (<code class="docutils literal notranslate"><span class="pre">configer</span> <span class="pre">tcode</span> <span class="pre">upfile</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">6. Api</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#id1">7. Пояснение магических переменных</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">configer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><span class="section-number">5. </span>Генерация кода</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/tcode.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1><span class="section-number">5. </span>Генерация кода<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<section id="configer-tcode-print">
+<h2><span class="section-number">5.1. </span>1 Файл с командами (<code class="docutils literal notranslate"><span class="pre">configer</span> <span class="pre">tcode</span> <span class="pre">print</span></code>)<a class="headerlink" href="#configer-tcode-print" title="Ссылка на этот заголовок"></a></h2>
+<p>Иметь файл в котором будут храниться сборник команд, он будет состоять из блоков исходного кода, эти блоки могут быть
+написаны на различных языках программирования, в этих блоках будут доступна возможность использовать шаблоны <code class="docutils literal notranslate"><span class="pre">$$(Ключ)$$</span></code>
+, данные для шаблона будут доступны во всех языках программирования внутри команды.</p>
+<p>Для того чтобы указать какие переменные нужно рассматривать в качестве команд, их нужно поместить в переменную
+<code class="docutils literal notranslate"><span class="pre">EXPORT_COMMAND</span></code>, переменная с конфигурациями должна соответствовать правилам, это должен быть картеж со следующим порядком
+значений: <code class="xref py py-class docutils literal notranslate"><span class="pre">logic_helpful.spec_name</span></code>, эти значения подставится в <code class="xref py py-meth docutils literal notranslate"><span class="pre">logic_tcode.tcodeLogic.__new__()</span></code></p>
+<p>Для того удобно создавать экспорты команды, используйте <a class="reference internal" href="api.html#useconf.export_code" title="useconf.export_code"><code class="xref py py-meth docutils literal notranslate"><span class="pre">useconf.export_code()</span></code></a></p>
+<p><strong>Пример такого сборника команд</strong></p>
+<dl class="field-list simple">
+<dt class="field-odd">configer/test/in/public/tcode/print_conf.py</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">useconf</span> <span class="kn">import</span> <span class="n">export_code</span><span class="p">,</span> <span class="n">autotests</span>
+
+<span class="n">math</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;sum&quot;</span><span class="p">:</span> <span class="n">export_code</span><span class="p">(</span>
+        <span class="n">template_lange</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;py&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">def $$(fun_name)$$(a: int, b: int) -&gt; int:</span>
+<span class="s2">    &#39;&#39;&#39;</span>
+<span class="s2">    $$(doc)$$</span>
+<span class="s2">    $$(TEST)$$</span>
+<span class="s2">    &#39;&#39;&#39;</span>
+<span class="s2">    return a + b</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
+            <span class="s2">&quot;cpp&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">int $$(fun_name)$$ (int a, int b){</span>
+<span class="s2">    /*$$(doc)$$*/</span>
+<span class="s2">    return a+b;</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
+            <span class="s2">&quot;js&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">function $$(fun_name)$$ (a, b){</span>
+<span class="s2">    /*$$(doc)$$*/</span>
+<span class="s2">    return a+b;</span>
+<span class="s2">}</span>
+<span class="s2"> &quot;&quot;&quot;</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="p">},</span>
+        <span class="n">kwargs</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;fun_name&quot;</span><span class="p">:</span> <span class="s2">&quot;sum_two_number&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;Сложение двух чисел&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;TEST&quot;</span><span class="p">:</span> <span class="n">autotests</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;in&quot;</span><span class="p">:</span> <span class="s2">&quot;sum_two_number(1, 2)&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;out&quot;</span><span class="p">:</span> <span class="s2">&quot;3&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;in&quot;</span><span class="p">:</span> <span class="s2">&quot;sum_two_number(3, 3)&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;out&quot;</span><span class="p">:</span> <span class="s2">&quot;6&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;in&quot;</span><span class="p">:</span> <span class="s2">&quot;sum_two_number(-10, -10)&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;out&quot;</span><span class="p">:</span> <span class="s2">&quot;-20&quot;</span>
+                <span class="p">},</span>
+            <span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">EXPORT_COMMAND</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="o">**</span><span class="n">math</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>По команде</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>configer tcode print <span class="s2">&quot;sum&quot;</span> -l <span class="s2">&quot;py&quot;</span>
+</pre></div>
+</div>
+<p>Мы получим вывод в консоль</p>
+<dl class="field-list simple">
+<dt class="field-odd">configer/test/out/public/tcode/print_tests.py</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># $$(START)$$ sum:py</span>
+<span class="k">def</span> <span class="nf">sum_two_number</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Сложение двух чисел</span>
+<span class="sd">    &gt;&gt;&gt; sum_two_number(1, 2)</span>
+<span class="sd">    3</span>
+<span class="sd">    &gt;&gt;&gt; sum_two_number(3, 3)</span>
+<span class="sd">    6</span>
+<span class="sd">    &gt;&gt;&gt; sum_two_number(-10, -10)</span>
+<span class="sd">    -20</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="c1"># $$(END)$$ 0d2394a3bd067f72b84d4c9637134682f7e129d9139c29aa3278f80e4cfd509f</span>
+</pre></div>
+</div>
+</section>
+<section id="test">
+<h2><span class="section-number">5.2. </span>2 Авто создание тестов (<code class="docutils literal notranslate"><span class="pre">TEST</span></code>)<a class="headerlink" href="#test" title="Ссылка на этот заголовок"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Предупреждение</p>
+<p>Данная возможность «пока» поддерживаться только для языка <code class="docutils literal notranslate"><span class="pre">Python</span></code></p>
+</div>
+<p>Для создания тестов есть специальный ключ <code class="docutils literal notranslate"><span class="pre">TEST</span></code>, это поваляет вставить тесты в любое место шаблона.
+Для создание ключа <code class="docutils literal notranslate"><span class="pre">TEST</span></code> рекомендую вызвать функцию <a class="reference internal" href="api.html#useconf.autotests" title="useconf.autotests"><code class="xref py py-meth docutils literal notranslate"><span class="pre">useconf.autotests()</span></code></a>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">См.также</p>
+<p>Если вам не нужны тесты то указывайте ключ <code class="docutils literal notranslate"><span class="pre">$$(TEST)$$</span></code> в шаблоне</p>
+</div>
+</section>
+<section id="configer-tcode-infile">
+<h2><span class="section-number">5.3. </span>3 Вставка шаблона в файл (<code class="docutils literal notranslate"><span class="pre">configer</span> <span class="pre">tcode</span> <span class="pre">infile</span></code>)<a class="headerlink" href="#configer-tcode-infile" title="Ссылка на этот заголовок"></a></h2>
+<p>Если нам нужно вставить этот блок кода в файл, то нужно в этом файле написать <code class="docutils literal notranslate"><span class="pre">$$(ИмяКоманды:ЯзыкПрограммирования)$$</span></code>, в
+это место вставиться готовый блок.</p>
+<div class="admonition seealso">
+<p class="admonition-title">См.также</p>
+<p>Рекомендую использовать эти шаблоны в отдельных модулях, в качестве подключаемых библиотек.
+Не нужно бездумно дублировать код в основной программе, мы же боремся с дублированием, а не преходим на его сторону.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">См.также</p>
+<p><code class="docutils literal notranslate"><span class="pre">configer</span> <span class="pre">tcode</span> <span class="pre">infile</span></code> - это одноразовая команда, для того чтобы обновить блок кода
+используйте <code class="docutils literal notranslate"><span class="pre">configer</span> <span class="pre">tcode</span> <span class="pre">upfile</span></code></p>
+</div>
+<p><strong>Пример файла в который нужно вставить блок</strong></p>
+<p>Путь к файлу <code class="docutils literal notranslate"><span class="pre">/home/user/castom_lib.py</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">configer/test/in/public/tcode/infile.py</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+
+<span class="k">def</span> <span class="nf">cos</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># $$(START)$$ sum:py</span>
+<span class="k">def</span> <span class="nf">sum_two_number</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Сложение двух чисел</span>
+<span class="sd">    &gt;&gt;&gt; sum_two_number(1, 2)</span>
+<span class="sd">    3</span>
+<span class="sd">    &gt;&gt;&gt; sum_two_number(3, 3)</span>
+<span class="sd">    6</span>
+<span class="sd">    &gt;&gt;&gt; sum_two_number(-10, -10)</span>
+<span class="sd">    -20</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="c1"># $$(END)$$ 0d2394a3bd067f72b84d4c9637134682f7e129d9139c29aa3278f80e4cfd509f</span>
+
+<span class="k">def</span> <span class="nf">mul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+</pre></div>
+</div>
+<p>По команде</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>configer tcode infile /home/user/castom_lib.py
+</pre></div>
+</div>
+<p>В итоге файл должен содержать</p>
+<dl class="field-list simple">
+<dt class="field-odd">configer/test/out/public/tcode/infile.py</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+
+<span class="k">def</span> <span class="nf">cos</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># $$(START)$$ sum:py</span>
+<span class="k">def</span> <span class="nf">sum_two_number</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Сложение двух чисел</span>
+<span class="sd">    &gt;&gt;&gt; sum_two_number(1, 2)</span>
+<span class="sd">    3</span>
+<span class="sd">    &gt;&gt;&gt; sum_two_number(3, 3)</span>
+<span class="sd">    6</span>
+<span class="sd">    &gt;&gt;&gt; sum_two_number(-10, -10)</span>
+<span class="sd">    -20</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="c1"># $$(END)$$ 0d2394a3bd067f72b84d4c9637134682f7e129d9139c29aa3278f80e4cfd509f</span>
+
+<span class="k">def</span> <span class="nf">mul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+</pre></div>
+</div>
+</section>
+<section id="configer-tcode-upfile">
+<h2><span class="section-number">5.4. </span>4 Авто обновление в файлах (<code class="docutils literal notranslate"><span class="pre">configer</span> <span class="pre">tcode</span> <span class="pre">upfile</span></code>)<a class="headerlink" href="#configer-tcode-upfile" title="Ссылка на этот заголовок"></a></h2>
+<p>Допустим с течением времени мы изменили исходный код в файле с командами, и теперь нам нужно обновить код в сторонних
+файлах. Информацию о том что блок кода различается мы получим из хеша.</p>
+<p>Допустим мы изменили код в команде</p>
+<dl class="field-list simple">
+<dt class="field-odd">configer/test/in/public/tcode/upfile_conf.py</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">useconf</span> <span class="kn">import</span> <span class="n">export_code</span>
+
+<span class="n">EXPORT_COMMAND</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;sum&quot;</span><span class="p">:</span> <span class="n">export_code</span><span class="p">(</span>
+        <span class="n">template_lange</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;py&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">def $$(fun_name)$$(a: float, b: float) -&gt; int:</span>
+<span class="s2">    &#39;&#39;&#39;$$(doc)$$&#39;&#39;&#39;</span>
+<span class="s2">    return int(a + b)</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
+        <span class="p">},</span>
+        <span class="c1"># Ключи для шаблонов, которые доступные во всех языках</span>
+        <span class="n">kwargs</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;fun_name&quot;</span><span class="p">:</span> <span class="s2">&quot;sum_two_float&quot;</span><span class="p">,</span>  <span class="c1"># ! Изменен</span>
+            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;Сложение двух чисел&quot;</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Прошлый файл</p>
+<dl class="field-list simple">
+<dt class="field-odd">configer/test/out/public/tcode/infile.py</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+
+<span class="k">def</span> <span class="nf">cos</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># $$(START)$$ sum:py</span>
+<span class="k">def</span> <span class="nf">sum_two_number</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Сложение двух чисел</span>
+<span class="sd">    &gt;&gt;&gt; sum_two_number(1, 2)</span>
+<span class="sd">    3</span>
+<span class="sd">    &gt;&gt;&gt; sum_two_number(3, 3)</span>
+<span class="sd">    6</span>
+<span class="sd">    &gt;&gt;&gt; sum_two_number(-10, -10)</span>
+<span class="sd">    -20</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="c1"># $$(END)$$ 0d2394a3bd067f72b84d4c9637134682f7e129d9139c29aa3278f80e4cfd509f</span>
+
+<span class="k">def</span> <span class="nf">mul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+</pre></div>
+</div>
+<p>Теперь, чтобы проверить и обновить файл(или рекурсивно всю папку)
+выполним команду. В данном случае проверим все файлы имение расширение <code class="docutils literal notranslate"><span class="pre">[.py,</span> <span class="pre">.md]</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>configer tcode upfile /home/user/ -t <span class="s2">&quot;py, md&quot;</span>
+</pre></div>
+</div>
+<p>В итоге файл <code class="docutils literal notranslate"><span class="pre">/home/user/castom_lib.py</span></code> будет иметь следующие содержание</p>
+<dl class="field-list simple">
+<dt class="field-odd">configer/test/out/public/tcode/upfile.py</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+
+<span class="k">def</span> <span class="nf">cos</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># $$(START)$$ sum:py</span>
+<span class="k">def</span> <span class="nf">sum_two_float</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;Сложение двух чисел&#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="c1"># $$(END)$$ 0d2394a3bd067f72b84d4c9637134682f7e129d9139c29aa3278f80e4cfd509f</span>
+
+<span class="k">def</span> <span class="nf">mul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="ttext.html" class="btn btn-neutral float-left" title="4. Шаблонный текст" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="api.html" class="btn btn-neutral float-right" title="6. Api" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Denis Kustov.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

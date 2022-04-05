@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2. Создание файлов конфигурации &mdash; документация configer 0.0.1</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="3. Сделать копию и скрыть данные" href="hideconf.html" />
+    <link rel="prev" title="1. Быстрый старт" href="use_guid.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> configer
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Оглавление:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="use_guid.html">1. Быстрый старт</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Создание файлов конфигурации</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hideconf.html">3. Сделать копию и скрыть данные</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ttext.html">4. Шаблонный текст</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tcode.html">5. Генерация кода</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">6. Api</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#id1">7. Пояснение магических переменных</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">configer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><span class="section-number">2. </span>Создание файлов конфигурации</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/parseconf.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1><span class="section-number">2. </span>Создание файлов конфигурации<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<p>Для того чтобы указать какие переменные нужно рассматривать в качестве конфигураций,
+их нужно поместить в переменную
+<code class="docutils literal notranslate"><span class="pre">EXPORT_PATH</span></code>, переменная с конфигурациями должна соответствовать правилам,
+это должен быть картеж со следующим порядком
+значений: <code class="xref py py-class docutils literal notranslate"><span class="pre">logic_helpful.spec_name</span></code>,
+эти значения подставится в <code class="xref py py-meth docutils literal notranslate"><span class="pre">logic_parseconf.parseconfLogic.parseconf()</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">configer/test/in/public/parseconf/conf.py</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">useconf</span> <span class="kn">import</span> <span class="n">export_path</span>
+
+<span class="n">port</span> <span class="o">=</span> <span class="mi">8080</span>
+<span class="n">secret_key</span> <span class="o">=</span> <span class="s2">&quot;sdfADSfsfsqdef43SD23&quot;</span>
+<span class="n">project_name</span> <span class="o">=</span> <span class="s2">&quot;configer&quot;</span>
+
+<span class="n">EXPORT_PATH</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">export_path</span><span class="p">(</span>
+        <span class="n">namefile</span><span class="o">=</span><span class="s2">&quot;__env.env&quot;</span><span class="p">,</span>
+        <span class="n">path</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span>
+        <span class="n">template</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">## Django</span>
+<span class="s2"># Ключ для расшифровки сессии</span>
+<span class="s2">DJANGO_SECRET_KEY=&quot;$$(secret_key)$$&quot;</span>
+<span class="s2"># Имя проекта</span>
+<span class="s2">NAME_PROJ=&quot;$$(project_name)$$&quot;</span>
+<span class="s2"># Режим работы (true/false)</span>
+<span class="s2">DEBUG=true</span>
+
+<span class="s2">### Docker</span>
+<span class="s2"># Путь к рабочей директории</span>
+<span class="s2">WORK_DIR=&quot;/usr/src/$$(project_name)$$&quot;</span>
+<span class="s2"># Путь к переемным окружениям</span>
+<span class="s2">PATH_ENV=&quot;./__env.env&quot;</span>
+<span class="s2">NGINX_PORT=$$(port)$$</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
+        <span class="n">kwargs</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;secret_key&quot;</span><span class="p">:</span> <span class="n">secret_key</span><span class="p">,</span>
+            <span class="s2">&quot;project_name&quot;</span><span class="p">:</span> <span class="n">project_name</span><span class="p">,</span>
+            <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="n">port</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>По команде</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>configer parseconf ./conf.py
+</pre></div>
+</div>
+<p>Создадутся файлы по указному пути <code class="docutils literal notranslate"><span class="pre">./test/__env.env</span></code>, содержание этого файла</p>
+<dl class="field-list simple">
+<dt class="field-odd">configer/test/out/public/parseconf/__env.env</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Django</span>
+<span class="c1"># Ключ для расшифровки сессии</span>
+<span class="n">DJANGO_SECRET_KEY</span><span class="o">=</span><span class="s2">&quot;sdfADSfsfsqdef43SD23&quot;</span>
+<span class="c1"># Имя проекта</span>
+<span class="n">NAME_PROJ</span><span class="o">=</span><span class="s2">&quot;configer&quot;</span>
+<span class="c1"># Режим работы (true/false)</span>
+<span class="n">DEBUG</span><span class="o">=</span><span class="n">true</span>
+
+<span class="c1">### Docker</span>
+<span class="c1"># Путь к рабочей директории</span>
+<span class="n">WORK_DIR</span><span class="o">=</span><span class="s2">&quot;/usr/src/configer&quot;</span>
+<span class="c1"># Путь к переемным окружениям</span>
+<span class="n">PATH_ENV</span><span class="o">=</span><span class="s2">&quot;./__env.env&quot;</span>
+<span class="n">NGINX_PORT</span><span class="o">=</span><span class="mi">8080</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Перезаписывать файл если он уже существует</p>
+<p>Если нам нужно перезаписать файл когда он уже существует, то укажите последним значением <code class="docutils literal notranslate"><span class="pre">isrewrite=True</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">configer/test/in/public/parseconf/rewrite_conf.py</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">useconf</span> <span class="kn">import</span> <span class="n">export_path</span>
+
+<span class="n">project_name</span> <span class="o">=</span> <span class="s2">&quot;configer&quot;</span>
+
+<span class="n">EXPORT_PATH</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">export_path</span><span class="p">(</span>
+        <span class="c1"># Этот файл создастся только если он не существует</span>
+        <span class="n">namefile</span><span class="o">=</span><span class="s2">&quot;README.md&quot;</span><span class="p">,</span>
+        <span class="n">path</span><span class="o">=</span><span class="s2">&quot;../&quot;</span><span class="p">,</span>
+        <span class="n">template</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">## Что это</span>
+<span class="s2">Программа: $$(project_name)$$</span>
+<span class="s2">## Установка</span>
+<span class="s2">## Использование</span>
+<span class="s2">    &quot;&quot;&quot;</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
+        <span class="n">kwargs</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;project_name&quot;</span><span class="p">:</span> <span class="n">project_name</span>
+        <span class="p">}</span>
+    <span class="p">),</span>
+    <span class="n">export_path</span><span class="p">(</span>
+        <span class="c1"># Этот файл будет постоянно перезаписываться</span>
+        <span class="c1"># (перезапись произойдет если данные изменились)</span>
+        <span class="n">namefile</span><span class="o">=</span><span class="s2">&quot;gitignore&quot;</span><span class="p">,</span>
+        <span class="n">path</span><span class="o">=</span><span class="s2">&quot;../&quot;</span><span class="p">,</span>
+        <span class="n">template</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">/venv</span>
+<span class="s2">/.ide</span>
+<span class="s2">/$$(project_name)$$/log</span>
+<span class="s2">    &quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="n">kwargs</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;project_name&quot;</span><span class="p">:</span> <span class="n">project_name</span>
+        <span class="p">},</span>
+        <span class="n">isrewrite</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="use_guid.html" class="btn btn-neutral float-left" title="1. Быстрый старт" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="hideconf.html" class="btn btn-neutral float-right" title="3. Сделать копию и скрыть данные" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Denis Kustov.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

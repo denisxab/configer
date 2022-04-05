@@ -1,0 +1,29 @@
+# $$(START)$$ sum:py
+def sum_two_number(a: int, b: int) -> int:
+    '''
+    Сложение двух чисел
+    >>> sum_two_number(1, 2)
+    3
+    >>> sum_two_number(3, 3)
+    6
+    >>> sum_two_number(-10, -10)
+    -20
+
+    '''
+    return a + b
+
+# $$(END)$$ 0d2394a3bd067f72b84d4c9637134682f7e129d9139c29aa3278f80e4cfd509f
+// $$(START)$$ sum:js
+function sum_two_number (a, b){
+    /*Сложение двух чисел*/
+    return a+b;
+}
+ 
+// $$(END)$$ 175a01788544f686f0f89c8eb743a0dd6b15b80c4d7b2f3da39d4be00062aebe
+// $$(START)$$ sum:cpp
+int sum_two_number (int a, int b){
+    /*Сложение двух чисел*/
+    return a+b;
+}
+
+// $$(END)$$ e846e9e0826275605c29789af8cda5228b8bcc608567d6f84db5b9e30ec65e61
