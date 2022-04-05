@@ -119,20 +119,27 @@ def tcodp(name_in_store: str, name_command: str, langs: str, nice: bool):
     if not langs:
         return echo(f"Список языков пуст {langs=}")
 
+    logger.info(langs, "LANG_TCODP")
+
+    copy_text: list[str] = []
     for _lang in langs:
-        res = tcodeLogic.print(name_command, _lang, name_in_store)
+        _tmp = tcodeLogic.print(name_command, _lang, name_in_store)
         # Для людей
         if nice:
-            syntax = Syntax(res, _lang, line_numbers=False)
+            syntax = Syntax(_tmp, _lang, line_numbers=False)
             console_rich.print(syntax)
-            try:
-                logger.success("Copy Buffer", 'COPY')
-                copy(res)
-            except ImportError:
-                logger.warning("Dont copy buffer", 'COPY')
+            copy_text.append(_tmp)
         # Для машин
         else:
-            echo(res)
+            echo(_tmp)
+
+    # Копируем в буфер обмена результат всех языков
+    if nice:
+        try:
+            logger.success("Copy Buffer", 'COPY')
+            copy(''.join(copy_text))
+        except ImportError:
+            logger.warning("Dont copy buffer", 'COPY')
 
 
 @command(help="Информация по хранилищу текстовых шаблонов")
