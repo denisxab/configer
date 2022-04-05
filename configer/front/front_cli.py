@@ -381,7 +381,7 @@ def ttexth(
         )
 
 
-@command(help="Установить пути к хранилищу для команд")
+@command(help="Установить пути к хранилищу")
 @argument(
     'cli_command',
     required=True,
@@ -394,7 +394,7 @@ def ttexth(
     nargs=1,
     type=Path(dir_okay=True, file_okay=False)
 )
-def sstore(path_store: str, cli_command: str):
+def storeset(path_store: str, cli_command: str):
     """
     :param path_store: Путь к хранилищу
     :param cli_command: Для какой команды
@@ -435,7 +435,7 @@ def main():
     main_group.add_command(ttexth)
     main_group.add_command(ttext)
     #
-    main_group.add_command(sstore)
+    main_group.add_command(storeset)
     main_group.add_command(storeh)
     # Создаем команды
     main_group()
