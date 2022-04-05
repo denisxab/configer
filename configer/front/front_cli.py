@@ -1,3 +1,4 @@
+import datetime
 import os.path
 from os import path
 from os.path import exists
@@ -69,8 +70,8 @@ def parseconf(path_conf: str, noautohide: bool, nice: bool):
         console_rich.print(
             Panel(
                 dict_to_tree(res, tree),
-                border_style='bright_yellow',
-                title=f'[bold green]Parse Conf[/]',
+                border_style='bold yellow',
+                title=f'[green]{datetime.datetime.now()}[/]',
                 expand=False
             ),
         )
@@ -311,6 +312,9 @@ def ttext(
     try:
         # Для людей
         if nice:
+            _self(name_command, kwargs, name_in_store)
+        # Для машин
+        else:
             res = ttextLogic.ttext(
                 name_command=name_command,
                 overload_kwargs=kwargs,
@@ -320,10 +324,6 @@ def ttext(
                 echo(res[1])
             else:
                 echo(res[2])
-        # Для машин
-        else:
-            _self(name_command, kwargs, name_in_store)
-
     except KeyErrorTtext:
         pass
 

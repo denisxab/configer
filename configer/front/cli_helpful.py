@@ -98,7 +98,7 @@ name_in_store_tcode[1]['callback'] = lambda *args: get_path_in_store_from_name_f
 
 nice_ = (
     ('nice', '-n', '--nice'),
-    dict(required=False, is_flag=True, default=True)
+    dict(required=False, is_flag=True, default=True, help='Если указать, то будет не красивый вывод информации')
 )
 
 type_file = (
