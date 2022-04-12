@@ -1,8 +1,9 @@
 from os import path
+from pathlib import Path
 from typing import Union
 
 from logsmal import logger
-from mg_file.file.helpful import absolute_path_dir, read_file_by_module, BaseHash
+from mg_file.file.helpful import read_file_by_module, BaseHash
 from mg_file.file.txt_file import TxtFile
 
 from .helpful import spec_name, parse_template
@@ -79,7 +80,8 @@ class parseconfLogic:
 
         #: Проверить необходимость перезаписи файла.
         #: Если файл существует и его не нужно перезаписывать то выходим
-        if path.exists(absolute_path_dir(_file_path) / _file_path) and is_rewrite is False:
+        if path.exists(Path(_file_path).resolve()) and is_rewrite is False:
+            logger.info(_file_path, flag="NOT_CREATE_TEMPLATE_WITH_NO_REWRITE")
             return (_file_path, False)
 
         #: Создаем шаблон
